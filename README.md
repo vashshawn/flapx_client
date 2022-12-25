@@ -1,5 +1,5 @@
 # FLAPX Ruby on rails API client
-Ruby on rails API client is a gem that makes it easy to work with FlapXcoin.
+Ruby on rails API client is a gem https://rubygems.org/ that makes it easy to work with FlapXCoin.
 
 ## Dependencies
 
@@ -14,7 +14,7 @@ Add this line to your application's Gemfile:
 
 Or install it yourself as:
 
-    $ gem install flapx_ruby-client
+    $ gem install flapx_client
 
 ## Configuration
 
@@ -152,7 +152,7 @@ end
 <tr>
 <td> get_generate </td>
 <td> </td>
-<td> Returns true or false whether FLAPXd is currently generating hashes </td>
+<td> Returns true or false whether deamon wallet, flapxd is currently generating hashes </td>
 <td> No
 </td></tr>
 <tr>
@@ -204,7 +204,7 @@ end
 <tr>
 <td> get_new_address </td>
 <td> [account] </td>
-<td> Returns a new FlapXcoin address for receiving payments.  If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account]. </td>
+<td> Returns a new FlapXCoin address for receiving payments.  If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account]. </td>
 <td> No
 </td></tr>
 <tr>
@@ -216,7 +216,7 @@ end
 <tr>
 <td> get_received_by_address </td>
 <td> [FLAPXaddress] [minconf=1] </td>
-<td> Returns the total amount received by <litedogeaddress< in transactions with at least [minconf] confirmations. While some might consider this obvious, value reported by this only considers *receiving* transactions. It does not check payments that have been made *from* this address. In other words, this is not "getaddressbalance". Works only for addresses in the local wallet, external addresses will always show 0. </td>
+<td> Returns the total amount received by <FLAPXaddress< in transactions with at least [minconf] confirmations. While some might consider this obvious, value reported by this only considers *receiving* transactions. It does not check payments that have been made *from* this address. In other words, this is not "getaddressbalance". Works only for addresses in the local wallet, external addresses will always show 0. </td>
 <td> No
 </td></tr>
 <tr>
@@ -266,7 +266,7 @@ end
 <tr>
 <td> key_pool_refill </td>
 <td> </td>
-<td> Fills the keypool to make room for more generated addresses, requires wallet passphrase to be set. </td>
+<td> Fills the keypool to make room for more generated addresses for change and normal wallet addresses, requires wallet passphrase to be set. </td>
 <td> Yes
 </td></tr>
 <tr>
@@ -400,7 +400,7 @@ Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
 <td> No
 </td></tr></table>
 
-*Table stolen from [node](https://github.com/countable/node-dogecoin)
+*Table stolen from javascript version of dogecoin [node](https://github.com/countable/node-dogecoin) 
 
 ## Contributing
 
