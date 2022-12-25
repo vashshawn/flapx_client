@@ -1,16 +1,16 @@
 # FLAPX Ruby on rails API client
-FLAPX Ruby on rails API client is a gem that makes it easy to work with Litedoge in ruby.
+Ruby on rails API client is a gem that makes it easy to work with FlapXcoin.
 
 ## Dependencies
 
-The only requirement is a running FlapXcoin daemon ([flapxd](https://github.com/FlapXCoin/flapxcoin)). Make sure to check out the [doc section](https://github.com/ldoge/LDOGE/doc) and follow the instructions for your os.
+The only requirement is a running FlapXcoin daemon ([flapxd](https://github.com/FlapXCoin/flapxcoin)). Make sure to check out the [doc section](https://github.com/FlapXCoin/flapxcoin/blob/master/doc/build-unix.txt) and follow the instructions for your os.
 NOTICE: by default flapxd will only allow local connections.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'flapx_ruby-client'
+    gem 'flapx_client'
 
 Or install it yourself as:
 
@@ -21,8 +21,8 @@ Or install it yourself as:
 If you're using rails you can create an initializer. Here are the default settings:
 
 ```ruby
-# config/initializers/flapx_ruby-client.rb
-flapx_ruby-client.configure do |config|
+# config/initializers/flapx_client.rb
+flapx_client.configure do |config|
     config.host = 'localhost'
     config.port = 60142
     config.protocol = :http
@@ -34,16 +34,16 @@ end
 You can also pass config variables as an options hash when creating a new client:
 
 ```ruby
-client = flapx_ruby-client.new(user: 'my_flapxd_username', password: 'my_super_secure_password')
+client = flapx_client.new(user: 'my_flapxd_username', password: 'my_super_secure_password')
 ```
 
 ## Example Usage
 
 ```ruby
 # create a new instance of the client
-client = flapx_ruby-client.new
+client = flapx_client.new
 
-# check that litedoged is running and that our credentials are correct
+# check that flapxd is running and that our credentials are correct
 if client.valid?
     # get a new wallet address
     new_wallet_addr = client.get_new_address
@@ -152,7 +152,7 @@ end
 <tr>
 <td> get_generate </td>
 <td> </td>
-<td> Returns true or false whether litedoged is currently generating hashes </td>
+<td> Returns true or false whether FLAPXd is currently generating hashes </td>
 <td> No
 </td></tr>
 <tr>
@@ -204,7 +204,7 @@ end
 <tr>
 <td> get_new_address </td>
 <td> [account] </td>
-<td> Returns a new litedoge address for receiving payments.  If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account]. </td>
+<td> Returns a new FlapXcoin address for receiving payments.  If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account]. </td>
 <td> No
 </td></tr>
 <tr>
@@ -215,7 +215,7 @@ end
 </td></tr>
 <tr>
 <td> get_received_by_address </td>
-<td> [litedogeaddress] [minconf=1] </td>
+<td> [FLAPXaddress] [minconf=1] </td>
 <td> Returns the total amount received by <litedogeaddress< in transactions with at least [minconf] confirmations. While some might consider this obvious, value reported by this only considers *receiving* transactions. It does not check payments that have been made *from* this address. In other words, this is not "getaddressbalance". Works only for addresses in the local wallet, external addresses will always show 0. </td>
 <td> No
 </td></tr>
@@ -266,7 +266,7 @@ end
 <tr>
 <td> key_pool_refill </td>
 <td> </td>
-<td> Fills the keypool, requires wallet passphrase to be set. </td>
+<td> Fills the keypool to make room for more generated addresses, requires wallet passphrase to be set. </td>
 <td> Yes
 </td></tr>
 <tr>
@@ -321,7 +321,7 @@ end
 </td></tr>
 <tr>
 <td> send_from </td>
-<td> [fromaccount] [toopalcoinaddress] [amount] [minconf=1] [comment] [comment-to] </td>
+<td> [fromaccount] [toFLAPXaddress] [amount] [minconf=1] [comment] [comment-to] </td>
 <td> <amount< is a real and is rounded to 8 decimal places. Will send the given amount to the given address, ensuring the account has a valid balance using [minconf] confirmations. Returns the transaction ID if successful (not in JSON object). </td>
 <td> Yes
 </td></tr>
@@ -404,7 +404,7 @@ Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
 
 ## Contributing
 
-For local testing, make sure to replace the user/password in `spec/client_spec.rb` and `spec/flapx_ruby-client
+For local testing, make sure to replace the user/password in `spec/client_spec.rb` and `spec/flapx_client
 _spec.rb` with the credentials for your local flapxd.
 
 1. Fork it
