@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Shawn M."]
   spec.email         = ["shawnvash@gmail.com"]
   spec.description   = %q{A FLAPX client is gem is a ruby wrapper for making remote procedure calls (rpc) to a FlapXCoin daemon wallet (flapxcoind.)}
-  spec.summary       = %q{Flapx API Client is a gem program wrapper that makes it easy to work with LiteDoge in ruby.}
+  spec.summary       = %q{Flapx API Client is a gem program wrapper that makes it easy to work with FlapXCoin in ruby.}
   spec.homepage      = "https://sites.google.com/view/flapxcoin/landing-pad"
   spec.license       = "MIT"
 
