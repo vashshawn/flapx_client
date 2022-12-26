@@ -1,18 +1,18 @@
 require 'net/http'
-require 'litedoge_client/client'
+require 'flapx_client/client'
 require 'errors/http_error'
 require 'errors/rpc_error'
 require 'errors/invalid_method_error'
 
-describe LiteDogeClient::Client do
+describe FlapxClient::Client do
 
   def valid_client
     # For local testing ensure you have litedoged running correctly and use your own username / password here
-    LiteDogeClient::Client.new(user: 'litedogerpc', password: '5d36c07c20a43a281f54c07d72ce78cc')
+    FlapxClient::Client.new(user: 'flapxcoinrpc', password: '5d36c07c20a43a281f54c07d72ce78cc')
   end
 
   it 'rejects bad credentials' do
-    bad_client = LiteDogeClient::Client.new(user: 'bad_username', password: 'bad_password')
+    bad_client = FlapxClient::Client.new(user: 'bad_username', password: 'bad_password')
     bad_client.valid?.should eql(false)
   end
 
@@ -21,7 +21,7 @@ describe LiteDogeClient::Client do
   end
 
   it 'catches requests with bad credentials' do
-    bad_client = LiteDogeClient::Client.new(user: 'bad_username', password: 'bad_password')
+    bad_client = FlapxClient::Client.new(user: 'bad_username', password: 'bad_password')
     expect { bad_client.get_info }.to raise_errorLiteDogenClient::HTTPError)
   end
 
@@ -42,11 +42,11 @@ describe LiteDogeClient::Client do
   end
 
   it 'throws rpc_error when the params are bad' do
-    expect { valid_client.get_account('bad_location') }.to raise_error(LiteDogeClient::RPCError)
+    expect { valid_client.get_account('bad_location') }.to raise_error(FlapxClient::RPCError)
   end
 
   it 'only allows listed methods' do
-    expect { valid_client.not_a_real_method }.to raise_error(LiteDogeClient::InvalidMethodError)
+    expect { valid_client.not_a_real_method }.to raise_error(FlapxClient::InvalidMethodError)
   end
 
 end
