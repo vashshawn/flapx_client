@@ -1,4 +1,4 @@
-class LiteDogeClient
+class FlapxClient
   class InvalidMethodError < StandardError
 
     attr_accessor :message
