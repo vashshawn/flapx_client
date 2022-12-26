@@ -1,4 +1,4 @@
-class flapx_client
+class FlapxClient
   METHODS = %w(
      add_multi_sig_address
      backup_wallet
