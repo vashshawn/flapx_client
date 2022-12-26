@@ -1,4 +1,4 @@
-class flapx_ruby-client
+class flapx_client
   class HTTPError < StandardError
 
     attr_accessor :object, :message
