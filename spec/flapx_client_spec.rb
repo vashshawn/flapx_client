@@ -3,8 +3,8 @@ require 'flapx_client/client'
 describe FlapxClient do
 
   def valid_client
-    # make sure to replace these with the credentials from your own opalcoind
-    FlapxClient.new(user: 'flapxcoinrpc', password: '5d36c07c20a43a281f54c07d72ce78cc')
+    # make sure to replace these with the credentials from your own flapxcoind
+    FlapxClient.new(user: 'flapxcoinrpc', password: 'yourpassword')
   end
 
   it 'sets up and works with a valid client' do
