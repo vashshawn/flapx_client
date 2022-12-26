@@ -1,31 +1,30 @@
-# LiteDogeClient
-
-liteDogeClient is a gem that makes it easy to work with Litedoge in ruby.
+# FLAPX Ruby on rails API client
+FLAPX Ruby on rails API client is a gem that makes it easy to work with Litedoge in ruby.
 
 ## Dependencies
 
-The only requirement is a running LiteDoge daemon ([litedoged](https://github.com/ldoge/LDOGE)). Make sure to check out the [doc section](https://github.com/ldoge/LDOGE/doc) and follow the instructions for your os.
-NOTICE: by default litedoged will only allow local connections.
+The only requirement is a running FlapXcoin daemon ([flapxcoind](https://github.com/FlapXCoin/flapxcoin)). Make sure to check out the [doc section](https://github.com/FlapXCoin/flapxcoin/tree/master/doc) and follow the instructions for your os.
+NOTICE: by default flapxcoind will only allow local connections.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'litedoge_client'
+    gem 'flapx_client'
 
 Or install it yourself as:
 
-    $ gem install litedoge_client
+    $ gem install flapx_client
 
 ## Configuration
 
 If you're using rails you can create an initializer. Here are the default settings:
 
 ```ruby
-# config/initializers/litedoge_client.rb
-LiteDogeClient.configure do |config|
+# config/initializers/flapx_ruby-client.rb
+flapx_ruby-client.configure do |config|
     config.host = 'localhost'
-    config.port = 51990
+    config.port = 60142
     config.protocol = :http
     config.user = ''
     config.password = ''
@@ -35,23 +34,23 @@ end
 You can also pass config variables as an options hash when creating a new client:
 
 ```ruby
-client = LiteDogeClient.new(user: 'my_litedoged_username', password: 'my_super_secure_password')
+client = flapx_ruby-client.new(user: 'my_flapxd_username', password: 'my_super_secure_password')
 ```
 
 ## Example Usage
 
 ```ruby
 # create a new instance of the client
-client = LiteDogeClient.new
+client = flapx_client.new
 
-# check that litedoged is running and that our credentials are correct
+# check that flapxcoind is running and that our credentials are correct
 if client.valid?
     # get a new wallet address
     new_wallet_addr = client.get_new_address
 
     # get the balance of our new wallet
     my_balance = client.get_balance(new_wallet_addr)
-    puts "I have #{my_balance} LDOGE!"
+    puts "I have #{my_balance} FLAPX!"
 else
     puts 'Something is wrong...'
 end
@@ -69,7 +68,7 @@ end
 <tr>
 <td> add_multi_sig_address </td>
 <td> [nrequired] ["key","key"] [account] </td>
-<td> <b>Currently only available on testnet</b> Add a nrequired-to-sign multisignature address to the wallet. Each key is a LiteDoge address or hex-encoded public key. If [account] is specified, assign address to [account]. </td>
+<td> <b>Currently only available on testnet</b> Add a nrequired-to-sign multisignature address to the wallet. Each key is a FLAPX address or hex-encoded public key. If [account] is specified, assign address to [account]. </td>
 <td> No
 </td></tr>
 <tr>
@@ -80,8 +79,8 @@ end
 </td></tr>
 <tr>
 <td> dump_priv_key </td>
-<td> [litedogeaddress] </td>
-<td> Reveals the private key corresponding to <litedogeaddress< </td>
+<td> [FLAPXaddress] </td>
+<td> Reveals the private key corresponding to <FLAPXaddress< </td>
 <td> Yes
 </td></tr>
 <tr>
@@ -92,14 +91,14 @@ end
 </td></tr>
 <tr>
 <td> get_account </td>
-<td> [litedogeaddress] </td>
+<td> [FLAPXaddress] </td>
 <td> Returns the account associated with the given address. </td>
 <td> No
 </td></tr>
 <tr>
 <td> get_account_address </td>
 <td> [account] </td>
-<td> Returns the current litedoge address for receiving payments to this account. </td>
+<td> Returns the current flapxcoin address for receiving payments to this account. </td>
 <td> No
 </td></tr>
 <tr>
@@ -205,13 +204,13 @@ end
 <tr>
 <td> get_new_address </td>
 <td> [account] </td>
-<td> Returns a new litedoge address for receiving payments.  If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account]. </td>
+<td> Returns a new flapxcoin address for receiving payments.  If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account]. </td>
 <td> No
 </td></tr>
 <tr>
 <td> get_received_by_account </td>
 <td> [account] [minconf=1] </td>
-<td> Returns the total amount received by addresses with [account] in transactions with at least [minconf] confirmations. If [account] not provided return will include all transactions to all accounts. (version 0.3.24-beta) </td>
+<td> Returns the total amount received by addresses with [account] in transactions with at least [minconf] confirmations. If [account] not provided return will include all transactions to all accounts. </td>
 <td> No
 </td></tr>
 <tr>
@@ -260,7 +259,7 @@ end
 </td></tr>
 <tr>
 <td> import_priv_key </td>
-<td> [litedogeprivkey] [label] </td>
+<td> [FLAPXprivkey] [label] </td>
 <td> Adds a private key (as returned by dumpprivkey) to your wallet. </td>
 <td> Yes
 </td></tr>
@@ -322,7 +321,7 @@ end
 </td></tr>
 <tr>
 <td> send_from </td>
-<td> [fromaccount] [toopalcoinaddress] [amount] [minconf=1] [comment] [comment-to] </td>
+<td> [fromaccount] [toFLAPXaddress] [amount] [minconf=1] [comment] [comment-to] </td>
 <td> <amount< is a real and is rounded to 8 decimal places. Will send the given amount to the given address, ensuring the account has a valid balance using [minconf] confirmations. Returns the transaction ID if successful (not in JSON object). </td>
 <td> Yes
 </td></tr>
@@ -334,13 +333,13 @@ end
 </td></tr>
 <tr>
 <td> send_to_address </td>
-<td> [litedogeaddress] [amount] [comment] [comment-to] </td>
+<td> [FLAPXaddress] [amount] [comment] [comment-to] </td>
 <td> <amount< is a real and is rounded to 8 decimal places. Returns the transaction ID <txid< if successful. </td>
 <td> Yes
 </td></tr>
 <tr>
 <td> set_account </td>
-<td> [litedogeaddress] [account] </td>
+<td> [FLAPXaddress] [account] </td>
 <td> Sets the account associated with the given address. Assigning address that is already assigned to the same account will create a new address associated with that account. </td>
 <td> No
 </td></tr>
@@ -354,7 +353,7 @@ Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
 </td></tr>
 <tr>
 <td> sign_message </td>
-<td> [litedogeaddress] [message] </td>
+<td> [FLAPXaddress] [message] </td>
 <td> Sign a message with the private key of an address. </td>
 <td> Yes
 </td></tr>
@@ -367,18 +366,18 @@ Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
 <tr>
 <td> stop </td>
 <td> </td>
-<td> Stop litedoge server. </td>
+<td> Stop FlapXCoin server. </td>
 <td> No
 </td></tr>
 <tr>
 <td> validate_address </td>
-<td> [litedogeaddress] </td>
-<td> Return information about [litedogeaddress]. </td>
+<td> [FLAPXaddress] </td>
+<td> Return information about [FLAPXaddress]. </td>
 <td> No
 </td></tr>
 <tr>
 <td> verify_message </td>
-<td> [litedogeaddress] [signature] [message] </td>
+<td> [FLAPXaddress] [signature] [message] </td>
 <td> Verify a signed message. </td>
 <td> No
 </td></tr>
@@ -401,11 +400,12 @@ Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
 <td> No
 </td></tr></table>
 
-*Table stolen from [node-litedoge](https://github.com/countable/node-dogecoin)
+*Table stolen from [node](https://github.com/countable/node-dogecoin)
 
 ## Contributing
 
-For local testing, make sure to replace the user/password in `spec/client_spec.rb` and `spec/litedoge_client_spec.rb` with the credentials for your local litedoged.
+For local testing, make sure to replace the user/password in `spec/client_spec.rb` and `spec/flapx_client
+_spec.rb` with the credentials for your local flapxcoind.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -413,6 +413,6 @@ For local testing, make sure to replace the user/password in `spec/client_spec.r
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-## Can't I just use a client for bitcoin or litecoin?
+## Can't I just use a client for bitcoin,Litecoin,FlapXCoin?
 
-Perhaps, but this way you don't need to worry about any current or future api inconsistencies. Plus, why use a tool built for an inferior alt coin?
+Perhaps, but this way you don't need to worry about any current or future api inconsistencies. 

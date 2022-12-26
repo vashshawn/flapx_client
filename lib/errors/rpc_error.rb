@@ -1,4 +1,4 @@
-class LiteDogeClient
+class flapx_client
   class RPCError < StandardError
 
     attr_accessor :message
