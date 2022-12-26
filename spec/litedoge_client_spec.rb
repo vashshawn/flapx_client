@@ -1,14 +1,14 @@
-require 'litedoge_client/client'
+require 'flapx_client/client'
 
-describe LiteDogeClient do
+describe FlapxClient do
 
   def valid_client
     # make sure to replace these with the credentials from your own opalcoind
-    LiteDogeClient.new(user: 'litedogerpc', password: '5d36c07c20a43a281f54c07d72ce78cc')
+    FlapxClient.new(user: 'litedogerpc', password: '5d36c07c20a43a281f54c07d72ce78cc')
   end
 
   it 'sets up and works with a valid client' do
-    bad_client = LiteDogeClient.new
+    bad_client = FlapxClient.new
     bad_client.valid?.should eql(false)
 
     valid_client.valid?.should eql(true)
@@ -21,10 +21,10 @@ describe LiteDogeClient do
 
   it 'configures itself properly' do
     LiteDogeClient.configure do |config|
-      config.user = 'litedogerpc'
+      config.user = 'flapxcoinrpc'
       config.password = '5d36c07c20a43a281f54c07d72ce78cc'
     end
-    client = LiteDogeClient.new
+    client = FlapxClient.new
     client.valid?.should eql(true)
   end
 
