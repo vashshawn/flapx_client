@@ -1,10 +1,10 @@
-require 'litedoge_client/version'
-require 'litedoge_client/client'
+require 'flapx_client/version'
+require 'flapx_client/client'
 
-class LiteDogeClient
+class FlapxClient
 
   def initialize(options = {})
-    @client = LiteDogeClient::Client.new(options)
+    @client = FlapxClient::Client.new(options)
   end
 
   # Delegate everything to the 'real' Client
@@ -25,7 +25,7 @@ class LiteDogeClient
 
     def initialize
       self.host = 'localhost'
-      self.port = 17014
+      self.port = 60142
       self.protocol = :http
       self.user = ''
       self.password = ''
