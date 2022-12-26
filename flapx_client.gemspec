@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = flapxClient::VERSION
   spec.authors       = ["Shawn M."]
   spec.email         = ["shawnvash@gmail.com"]
-  spec.description   = %q{A FLAPX client is gem is a ruby wrapper for making remote procedure calls (rpc) to a litedoge daemon (litedoged.)}
+  spec.description   = %q{A FLAPX client is gem is a ruby wrapper for making remote procedure calls (rpc) to a FlapXCoin daemon wallet (flapxcoind.)}
   spec.summary       = %q{Flapx API Client is a gem program wrapper that makes it easy to work with LiteDoge in ruby.}
   spec.homepage      = "https://sites.google.com/view/flapxcoin/landing-pad"
   spec.license       = "MIT"
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler", "~> 2.2.33"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 2.6"
 end
