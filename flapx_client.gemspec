@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'litedoge_client/version'
+require 'flapx_client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "opalcoin_client"
-  spec.version       = LiteDogeClient::VERSION
+  spec.name          = "flapx_client"
+  spec.version       = flapxClient::VERSION
   spec.authors       = ["Shawn M."]
-  spec.email         = ["info@litedogee.com"]
-  spec.description   = %q{A LiteDoge client for ruby. This gem is a ruby wrapper for making remote procedure calls (rpc) to a litedoge daemon (litedoged.)}
-  spec.summary       = %q{LiteDogeClient is a gem that makes it easy to work with LiteDoge in ruby.}
-  spec.homepage      = "https://litedogeofficail.org"
+  spec.email         = ["shawnvash@gmail.com"]
+  spec.description   = %q{A FLAPX client is gem is a ruby wrapper for making remote procedure calls (rpc) to a litedoge daemon (litedoged.)}
+  spec.summary       = %q{Flapx API Client is a gem program wrapper that makes it easy to work with LiteDoge in ruby.}
+  spec.homepage      = "https://sites.google.com/view/flapxcoin/landing-pad"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
