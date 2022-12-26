@@ -7,7 +7,7 @@ require 'errors/invalid_method_error'
 describe FlapxClient::Client do
 
   def valid_client
-    # For local testing ensure you have litedoged running correctly and use your own username / password here
+    # For local testing ensure you have flapxcoind running correctly and use your own username / password here
     FlapxClient::Client.new(user: 'flapxcoinrpc', password: '5d36c07c20a43a281f54c07d72ce78cc')
   end
 
