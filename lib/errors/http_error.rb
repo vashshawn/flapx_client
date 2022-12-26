@@ -1,4 +1,4 @@
-class LiteDogeClient
+class FlapxClient
   class HTTPError < StandardError
 
     attr_accessor :object, :message
