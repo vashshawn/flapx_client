@@ -1,14 +1,14 @@
 require 'net/http'
 require 'uri'
 require 'json'
-require 'litedoge_client'
-require 'litedoge_client/methods'
+require 'flapx_client'
+require 'flapx_client/methods'
 require 'errors/http_error'
 require 'errors/rpc_error'
 require 'errors/invalid_method_error'
 
 
-class flapx_client
+class Flapx_client
   class Client
 
     attr_accessor :options
@@ -23,7 +23,7 @@ class flapx_client
     end
 
     def method_missing(name, *args)
-      raise LiteDogeClient::InvalidMethodError.new(name) unless LiteDogeClient::METHODS.include?(name.to_s)
+      raise FlapxClient::InvalidMethodError.new(name) unless LiteDogeClient::METHODS.include?(name.to_s)
 
       response = http_post_request( get_post_body(name, args) )
       get_response_data(response)
@@ -43,7 +43,7 @@ class flapx_client
       response = http.request(request)
 
       return response if response.class == Net::HTTPOK or response.class == Net::HTTPInternalServerError
-      raise flapx_client::HTTPError.new(response)
+      raise Flapx_client::HTTPError.new(response)
     end
 
     private
@@ -54,7 +54,7 @@ class flapx_client
 
     def get_response_data(http_ok_response)
       resp = JSON.parse( http_ok_response.body )
-      raise flapx_client::RPCError.new(resp['error']['message']) if resp['error'] and http_ok_response.class == Net::HTTPInternalServerError
+      raise Flapx_client::RPCError.new(resp['error']['message']) if resp['error'] and http_ok_response.class == Net::HTTPInternalServerError
       resp['result']
     end
 
@@ -64,7 +64,7 @@ class flapx_client
 
     def get_defaults
       flapx_client.configuration.instance_variables.each.inject({}) {|hash, var|
-        hash[var.to_s.delete('@').to_sym] = LiteDogeClient.configuration.instance_variable_get(var);
+        hash[var.to_s.delete('@').to_sym] = FlapxClient.configuration.instance_variable_get(var);
         hash
       }
     end
