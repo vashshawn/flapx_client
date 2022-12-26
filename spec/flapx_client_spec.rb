@@ -4,7 +4,7 @@ describe FlapxClient do
 
   def valid_client
     # make sure to replace these with the credentials from your own opalcoind
-    FlapxClient.new(user: 'litedogerpc', password: '5d36c07c20a43a281f54c07d72ce78cc')
+    FlapxClient.new(user: 'flapxcoinrpc', password: '5d36c07c20a43a281f54c07d72ce78cc')
   end
 
   it 'sets up and works with a valid client' do
@@ -20,7 +20,7 @@ describe FlapxClient do
   end
 
   it 'configures itself properly' do
-    LiteDogeClient.configure do |config|
+    FlapxClient.configure do |config|
       config.user = 'flapxcoinrpc'
       config.password = '5d36c07c20a43a281f54c07d72ce78cc'
     end
